@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>महेश गुरु - GK & Current Affairs App</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #ec4899;
+            --bg: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --success: #22c55e;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-light);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 480px;
+            background: #0f172a;
+            min-height: 100vh;
+            padding-bottom: 70px;
+            position: relative;
+        }
+
+        /* Animated Header */
+        header {
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            padding: 25px 20px 30px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .brand-title {
+            font-size: 24px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-sub {
+            font-size: 13px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+
+        /* Category Slider */
+        .categories {
+            display: flex;
+            gap: 10px;
+            padding: 15px 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            background: var(--card-bg);
+            color: #94a3b8;
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .cat-btn.active {
+            background: linear-gradient(45deg, #4f46e5, #ec4899);
+            color: white;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Quiz Box */
+        .quiz-section {
+            padding: 10px 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.05);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .badge {
+            background: rgba(79, 70, 229, 0.2);
+            color: #818cf8;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .opt-btn {
+            background: #273549;
+            color: #e2e8f0;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 14px 16px;
+            border-radius: 16px;
+            text-align: left;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .opt-btn:active {
+            transform: scale(0.98);
+        }
+
+        .opt-btn.correct {
+            background: var(--success) !important;
+            color: white !important;
+            animation: bounce 0.4s;
+        }
+
+        .opt-btn.wrong {
+            background: var(--danger) !important;
+            color: white !important;
+            animation: shake 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #4f46e5, #9333ea);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 14px;
+            border-radius: 16px;
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        /* Bottom Nav */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 480px;
+            background: #1e293b;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .nav-item {
+            color: #64748b;
+            text-decoration: none;
+            font-size: 11px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+        }
+
+        .nav-item.active {
+            color: #818cf8;
+        }
+
+        .nav-item i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <!-- Header -->
+    <header>
+        <div class="brand-title">
+            <i class="fa-solid fa-graduation-cap"></i> महेश गुरु (Mahesh Guru)
+        </div>
+        <div class="brand-sub">MP GK, Indian GK एवं Current Affairs का संपूर्ण संग्रह</div>
+    </header>
+
+    <!-- Categories -->
+    <div class="categories">
+        <button class="cat-btn active" onclick="filterCategory('MP GK')">मध्य प्रदेश GK</button>
+        <button class="cat-btn" onclick="filterCategory('India GK')">इंडिया सामान्य ज्ञान</button>
+        <button class="cat-btn" onclick="filterCategory('Current')">करेंट अफेयर्स</button>
+        <button class="cat-btn" onclick="filterCategory('History')">इतिहास & भूगोल</button>
+    </div>
+
+    <!-- Main Quiz Container -->
+    <div class="quiz-section">
+        <div class="card" id="card">
+            <span class="badge" id="categoryBadge">MP Special GK</span>
+            <div class="question-text" id="questionText">प्रश्न लोड हो रहा है...</div>
+            <div class="options-list" id="optionsBox">
+                <!-- ऑप्शंस जावास्क्रिप्ट से आएंगे -->
+            </div>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">अगला प्रश्न <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <div class="bottom-nav">
+        <div class="nav-item active"><i class="fa-solid fa-house"></i> होम</div>
+        <div class="nav-item" onclick="alert('महेश गुरु ऐप में 50,000+ से ज्यादा प्रश्न उपलब्ध हैं!')"><i class="fa-solid fa-book-open"></i> विषय</div>
+        <div class="nav-item" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i> शेयर</div>
+    </div>
+</div>
+
+<script>
+    // प्रश्नों का अनलिमिटेड डेटाबेस (आप इसमें जितने चाहें प्रश्न जोड़ सकते हैं)
+    const questionsDatabase = [
+        // MP GK
+        {
+            category: "MP GK",
+            badge: "MP GK स्पेशल",
+            question: "मध्य प्रदेश का राज्य पशु कौन सा है?",
+            options: ["चीता", "बारहसिंगा (दलदल का हिरण)", "बाघ", "हाथी"],
+            answer: 1
+        },
+        {
+            category: "MP GK",
+            badge: "MP GK स्पेशल",
+            question: "मध्य प्रदेश की 'सांची स्तूप' का निर्माण किस शासक ने करवाया था?",
+            options: ["चंद्रगुप्त मौर्य", "सम्राट अशोक", "कनिष्क", "राजा भोज"],
+            answer: 1
+        },
+        {
+            category: "MP GK",
+            badge: "MP GK स्पेशल",
+            question: "मध्य प्रदेश का सबसे बड़ा राष्ट्रीय उद्यान कौन सा है?",
+            options: ["कान्हा किसली", "बांधवगढ़", "पेंच", "माधव"],
+            answer: 0
+        },
+        // Indian GK
+        {
+            category: "India GK",
+            badge: "भारत का सामान्य ज्ञान",
+            question: "भारतीय संविधान का जनक किसे कहा जाता है?",
+            options: ["डॉ. राजेंद्र प्रसाद", "महात्मा गांधी", "डॉ. बी.आर. अंबेडकर", "पंडित नेहरू"],
+            answer: 2
+        },
+        {
+            category: "India GK",
+            badge: "भारत का सामान्य ज्ञान",
+            question: "भारत की सबसे लम्बी नदी कौन सी है?",
+            options: ["ब्रह्मपुत्र", "गंगा", "गोदावरी", "नर्मदा"],
+            answer: 1
+        },
+        // Current Affairs
+        {
+            category: "Current",
+            badge: "करेंट अफेयर्स",
+            question: "भारत के वर्तमान मुख्य चुनाव आयुक्त कौन हैं?",
+            options: ["राजीव कुमार", "सुनील अरोड़ा", "ओम बिरला", "एस. जयशंकर"],
+            answer: 0
+        },
+        // History & Geography
+        {
+            category: "History",
+            badge: "इतिहास एवं भूगोल",
+            question: "सिंधु घाटी सभ्यता का प्रमुख बंदरगाह कौन सा था?",
+            options: ["कालीबंगा", "लोथल", "हड़प्पा", "मोहनजोदड़ो"],
+            answer: 1
+        }
+    ];
+
+    let currentQuestions = [];
+    let currentIndex = 0;
+
+    function filterCategory(cat) {
+        document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        currentQuestions = questionsDatabase.filter(q => q.category === cat);
+        if(currentQuestions.length === 0) currentQuestions = questionsDatabase;
+        currentIndex = 0;
+        loadQuestion();
+    }
+
+    function loadQuestion() {
+        const q = currentQuestions[currentIndex];
+        document.getElementById('categoryBadge').innerText = q.badge;
+        document.getElementById('questionText').innerText = `Q${currentIndex + 1}. ${q.question}`;
+        
+        const optBox = document.getElementById('optionsBox');
+        optBox.innerHTML = '';
+        document.getElementById('nextBtn').style.display = 'none';
+
+        q.options.forEach((opt, idx) => {
+            const btn = document.createElement('button');
+            btn.className = 'opt-btn';
+            btn.innerHTML = `<span>${opt}</span> <i class="fa-regular fa-circle"></i>`;
+            btn.onclick = () => checkAnswer(btn, idx, q.answer);
+            optBox.appendChild(btn);
+        });
+    }
+
+    function checkAnswer(btn, selected, correct) {
+        const allBtns = document.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+
+        if(selected === correct) {
+            btn.classList.add('correct');
+            btn.querySelector('i').className = "fa-solid fa-circle-check";
+        } else {
+            btn.classList.add('wrong');
+            btn.querySelector('i').className = "fa-solid fa-circle-xmark";
+            allBtns[correct].classList.add('correct');
+        }
+
+        document.getElementById('nextBtn').style.display = 'block';
+    }
+
+    function nextQuestion() {
+        currentIndex++;
+        if(currentIndex >= currentQuestions.length) {
+            currentIndex = 0;
+        }
+        loadQuestion();
+    }
+
+    function shareApp() {
+        if (navigator.share) {
+            navigator.share({
+                title: 'महेश गुरु - GK App',
+                text: 'MP GK और Indian GK की सबसे बेहतरीन तैयारी के लिए महेश गुरु ऐप डाउनलोड करें!',
+                url: window.location.href
+            });
+        } else {
+            alert('ऐप लिंक कॉपी हो गया है!');
+        }
+    }
+
+    // डिफ़ॉल्ट रूप से पहले MP GK लोड करें
+    currentQuestions = questionsDatabase.filter(q => q.category === 'MP GK');
+    loadQuestion();
+</script>
+</body>
+</html>

@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>महेश गुरु - GK & Current Affairs App</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>महेश गुरु - AI Animated GK App</title>
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary: #4f46e5;
             --secondary: #ec4899;
-            --bg: #0f172a;
+            --bg: #0b0f19;
             --card-bg: #1e293b;
             --text-light: #f8fafc;
-            --success: #22c55e;
+            --success: #10b981;
             --danger: #ef4444;
+            --ai-glow: #06b6d4;
         }
 
         * {
@@ -40,59 +41,170 @@
             max-width: 480px;
             background: #0f172a;
             min-height: 100vh;
-            padding-bottom: 70px;
+            padding-bottom: 80px;
             position: relative;
         }
 
-        /* Animated Header */
+        /* ================= शानदार ANIMATED HEADER ================= */
         header {
-            background: linear-gradient(135deg, #4f46e5, #9333ea);
-            padding: 25px 20px 30px;
+            background: linear-gradient(145deg, #1e1b4b, #311042);
+            padding: 22px 18px 25px;
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
-            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
-            animation: slideDown 0.6s ease-out;
+            box-shadow: 0 10px 30px rgba(147, 51, 234, 0.35);
+            border-bottom: 2px solid rgba(236, 72, 153, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        @keyframes slideDown {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        /* बैकग्राउंड में तैरता हुआ हल्का ग्लो */
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(236,72,153,0.15) 0%, transparent 60%);
+            animation: rotateBg 8s linear infinite;
+            pointer-events: none;
         }
 
-        .brand-title {
-            font-size: 24px;
-            font-weight: 700;
+        @keyframes rotateBg {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* 👑 एनिमेटेड ब्रांड नेम (Mahesh Guru Animated) 👑 */
+        .brand-box {
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .brand-sub {
-            font-size: 13px;
-            opacity: 0.9;
-            margin-top: 5px;
+        .animated-logo {
+            font-size: 28px;
+            color: #facc15;
+            display: inline-block;
+            animation: floatLogo 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.7));
         }
 
-        /* Category Slider */
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-6px) rotate(10deg) scale(1.15); }
+        }
+
+        .animated-title {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            /* मल्टीकलर मूविंग ग्रेडिएंट टेक्स्ट */
+            background: linear-gradient(90deg, #ff3b3b, #ff007f, #a855f7, #06b6d4, #10b981, #ffbe0b, #ff007f);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: rainbowFlow 4s linear infinite, glowPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes rainbowFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes glowPulse {
+            0% { filter: drop-shadow(0 0 5px rgba(236, 72, 153, 0.4)); }
+            100% { filter: drop-shadow(0 0 18px rgba(6, 182, 212, 0.8)); }
+        }
+
+        /* AI LIVE BLINKING BADGE */
+        .live-tag {
+            background: linear-gradient(45deg, #ef4444, #f43f5e);
+            color: white;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            animation: pulseBadge 1.2s infinite;
+            margin-left: 5px;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+        }
+
+        @keyframes pulseBadge {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.92); opacity: 0.7; }
+        }
+
+        .sound-btn {
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #f8fafc;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+        }
+
+        /* ================= 15-SEC TIMER BAR ================= */
+        .timer-wrapper {
+            margin: 15px 20px 4px;
+        }
+
+        .timer-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 6px;
+        }
+
+        .timer-track {
+            height: 9px;
+            background: #1e293b;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .timer-progress {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(90deg, #10b981, #eab308, #ef4444);
+            border-radius: 10px;
+            transition: width 1s linear;
+        }
+
+        /* ================= CATEGORIES ================= */
         .categories {
             display: flex;
             gap: 10px;
-            padding: 15px 20px;
+            padding: 12px 20px;
             overflow-x: auto;
             scrollbar-width: none;
         }
-
-        .categories::-webkit-scrollbar {
-            display: none;
-        }
+        .categories::-webkit-scrollbar { display: none; }
 
         .cat-btn {
             background: var(--card-bg);
             color: #94a3b8;
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 10px 18px;
+            border: 1px solid rgba(255,255,255,0.06);
+            padding: 8px 16px;
             border-radius: 20px;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             white-space: nowrap;
             cursor: pointer;
@@ -102,58 +214,76 @@
         .cat-btn.active {
             background: linear-gradient(45deg, #4f46e5, #ec4899);
             color: white;
-            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
             transform: scale(1.05);
         }
 
-        /* Quiz Box */
-        .quiz-section {
-            padding: 10px 20px;
-        }
+        /* ================= QUIZ CARD ================= */
+        .quiz-section { padding: 5px 20px; }
 
         .card {
             background: var(--card-bg);
             border-radius: 24px;
-            padding: 24px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.05);
-            animation: fadeIn 0.5s ease-in-out;
+            padding: 22px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.06);
+            animation: cardAppear 0.4s ease;
         }
 
-        @keyframes fadeIn {
+        @keyframes cardAppear {
             from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
         }
 
         .badge {
             background: rgba(79, 70, 229, 0.2);
             color: #818cf8;
-            padding: 5px 12px;
+            padding: 4px 12px;
             border-radius: 12px;
             font-size: 11px;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .speaker-btn {
+            background: rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: #38bdf8;
+            padding: 6px 12px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
         }
 
         .question-text {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             line-height: 1.5;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            color: #f1f5f9;
         }
 
         .options-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
 
         .opt-btn {
             background: #273549;
             color: #e2e8f0;
             border: 1px solid rgba(255,255,255,0.06);
-            padding: 14px 16px;
+            padding: 13px 16px;
             border-radius: 16px;
             text-align: left;
             font-size: 14px;
@@ -164,31 +294,45 @@
             align-items: center;
         }
 
-        .opt-btn:active {
-            transform: scale(0.98);
-        }
+        .opt-btn:active { transform: scale(0.98); }
 
         .opt-btn.correct {
             background: var(--success) !important;
             color: white !important;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
             animation: bounce 0.4s;
         }
 
         .opt-btn.wrong {
             background: var(--danger) !important;
             color: white !important;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
             animation: shake 0.4s;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+        @keyframes bounce { 50% { transform: scale(1.03); } }
+        @keyframes shake { 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+
+        /* AI BUTTON & NEXT BUTTON */
+        .ai-help-btn {
+            background: linear-gradient(135deg, #06b6d4, #3b82f6);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 15px;
+            margin-top: 15px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            display: none;
+            box-shadow: 0 4px 15px rgba(6, 182, 212, 0.4);
+            animation: pulseGlowBtn 2s infinite;
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        @keyframes pulseGlowBtn {
+            0%, 100% { box-shadow: 0 0 12px rgba(6, 182, 212, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.8); }
         }
 
         .next-btn {
@@ -196,17 +340,72 @@
             color: white;
             border: none;
             width: 100%;
-            padding: 14px;
-            border-radius: 16px;
-            margin-top: 20px;
-            font-size: 16px;
-            font-weight: 600;
+            padding: 13px;
+            border-radius: 15px;
+            margin-top: 10px;
+            font-size: 15px;
+            font-weight: 700;
             cursor: pointer;
             display: none;
             box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
         }
 
-        /* Bottom Nav */
+        /* AI POPUP MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-box {
+            background: #1e293b;
+            border: 2px solid #06b6d4;
+            border-radius: 22px;
+            padding: 22px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
+            animation: modalUp 0.3s ease;
+        }
+
+        @keyframes modalUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        .modal-box h3 {
+            color: #38bdf8;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-content-text {
+            font-size: 13px;
+            line-height: 1.6;
+            color: #cbd5e1;
+            margin-bottom: 18px;
+            background: rgba(0,0,0,0.25);
+            padding: 14px;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 12px;
+            width: 100%;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* BOTTOM NAV */
         .bottom-nav {
             position: fixed;
             bottom: 0;
@@ -216,12 +415,12 @@
             display: flex;
             justify-content: space-around;
             padding: 12px 0;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            z-index: 100;
         }
 
         .nav-item {
             color: #64748b;
-            text-decoration: none;
             font-size: 11px;
             display: flex;
             flex-direction: column;
@@ -230,118 +429,237 @@
             cursor: pointer;
         }
 
-        .nav-item.active {
-            color: #818cf8;
-        }
-
-        .nav-item i {
-            font-size: 18px;
-        }
+        .nav-item.active { color: #818cf8; }
+        .nav-item i { font-size: 18px; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <!-- Header -->
+    <!-- एनिमेटेड हेडर -->
     <header>
-        <div class="brand-title">
-            <i class="fa-solid fa-graduation-cap"></i> महेश गुरु (Mahesh Guru)
+        <div class="header-top">
+            <div class="brand-box">
+                <i class="fa-solid fa-graduation-cap animated-logo"></i>
+                <div class="animated-title">महेश गुरु</div>
+                <span class="live-tag">AI LIVE</span>
+            </div>
+            <button class="sound-btn" onclick="toggleAudio()" title="आवाज़ ऑन/ऑफ">
+                <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+            </button>
         </div>
-        <div class="brand-sub">MP GK, Indian GK एवं Current Affairs का संपूर्ण संग्रह</div>
     </header>
 
-    <!-- Categories -->
-    <div class="categories">
-        <button class="cat-btn active" onclick="filterCategory('MP GK')">मध्य प्रदेश GK</button>
-        <button class="cat-btn" onclick="filterCategory('India GK')">इंडिया सामान्य ज्ञान</button>
-        <button class="cat-btn" onclick="filterCategory('Current')">करेंट अफेयर्स</button>
-        <button class="cat-btn" onclick="filterCategory('History')">इतिहास & भूगोल</button>
-    </div>
-
-    <!-- Main Quiz Container -->
-    <div class="quiz-section">
-        <div class="card" id="card">
-            <span class="badge" id="categoryBadge">MP Special GK</span>
-            <div class="question-text" id="questionText">प्रश्न लोड हो रहा है...</div>
-            <div class="options-list" id="optionsBox">
-                <!-- ऑप्शंस जावास्क्रिप्ट से आएंगे -->
-            </div>
-            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">अगला प्रश्न <i class="fa-solid fa-arrow-right"></i></button>
+    <!-- 15-सेकंड टाइमर -->
+    <div class="timer-wrapper">
+        <div class="timer-info">
+            <span><i class="fa-solid fa-stopwatch"></i> टाइमर</span>
+            <span id="timerText">15s</span>
+        </div>
+        <div class="timer-track">
+            <div class="timer-progress" id="timerProgress"></div>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
+    <!-- कैटेगरी टैब्स -->
+    <div class="categories">
+        <button class="cat-btn active" onclick="filterCategory('MP GK', event)">मध्य प्रदेश GK</button>
+        <button class="cat-btn" onclick="filterCategory('India GK', event)">इंडिया GK</button>
+        <button class="cat-btn" onclick="filterCategory('Current', event)">करेंट अफेयर्स</button>
+        <button class="cat-btn" onclick="filterCategory('History', event)">इतिहास/भूगोल</button>
+    </div>
+
+    <!-- क्विज कार्ड -->
+    <div class="quiz-section">
+        <div class="card" id="card">
+            <div class="card-top">
+                <span class="badge" id="categoryBadge">MP GK स्पेशल</span>
+                <button class="speaker-btn" onclick="speakCurrentQuestion()">
+                    <i class="fa-solid fa-volume-up"></i> सुनो
+                </button>
+            </div>
+            
+            <div class="question-text" id="questionText">प्रश्न लोड हो रहा है...</div>
+            <div class="options-list" id="optionsBox"></div>
+
+            <button class="ai-help-btn" id="aiBtn" onclick="openAIExplainer()">
+                <i class="fa-solid fa-robot"></i> महेश AI गुरु से समझें
+            </button>
+            <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+                अगला प्रश्न <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- AI एक्सप्लेनेशन पॉपअप -->
+    <div class="modal" id="aiModal">
+        <div class="modal-box">
+            <h3><i class="fa-solid fa-brain"></i> महेश AI गुरु विश्लेषण</h3>
+            <div class="modal-content-text" id="aiText">लोड हो रहा है...</div>
+            <button class="close-btn" onclick="closeAIModal()">समझ गया 👍</button>
+        </div>
+    </div>
+
+    <!-- बॉटम नेविगेशन -->
     <div class="bottom-nav">
         <div class="nav-item active"><i class="fa-solid fa-house"></i> होम</div>
-        <div class="nav-item" onclick="alert('महेश गुरु ऐप में 50,000+ से ज्यादा प्रश्न उपलब्ध हैं!')"><i class="fa-solid fa-book-open"></i> विषय</div>
+        <div class="nav-item" onclick="openAIExplainer()"><i class="fa-solid fa-robot" style="color:#06b6d4;"></i> AI गुरु</div>
         <div class="nav-item" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i> शेयर</div>
     </div>
 </div>
 
 <script>
-    // प्रश्नों का अनलिमिटेड डेटाबेस (आप इसमें जितने चाहें प्रश्न जोड़ सकते हैं)
+    // 1. SOUND SYSTEM (बिना फाइल लोड किए डायरेक्ट ऑडियो जनरेटर)
+    let soundEnabled = true;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+
+    function playTone(freq, type, duration, delay = 0) {
+        if (!soundEnabled) return;
+        initAudio();
+        setTimeout(() => {
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {}
+        }, delay);
+    }
+
+    function playSuccessSound() {
+        playTone(523.25, 'sine', 0.15, 0);   // Ting 1
+        playTone(659.25, 'sine', 0.25, 120); // Ting 2 (Higher)
+    }
+
+    function playWrongSound() {
+        playTone(220, 'sawtooth', 0.2, 0);   // Buzzer low
+        playTone(180, 'sawtooth', 0.3, 140);
+    }
+
+    function toggleAudio() {
+        soundEnabled = !soundEnabled;
+        document.getElementById('soundIcon').className = soundEnabled ? 'fa-solid fa-volume-high' : 'fa-solid fa-volume-xmark';
+    }
+
+    // 2. TEXT-TO-SPEECH (हिंदी आवाज़ में प्रश्न पढ़ना)
+    function speakCurrentQuestion() {
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+            const q = currentQuestions[currentIndex];
+            let text = `${q.question}। विकल्प हैं: 1, ${q.options[0]}। 2, ${q.options[1]}। 3, ${q.options[2]}। 4, ${q.options[3]}`;
+            const utt = new SpeechSynthesisUtterance(text);
+            utt.lang = 'hi-IN';
+            utt.rate = 0.95;
+            window.speechSynthesis.speak(utt);
+        }
+    }
+
+    // 3. प्रश्न बैंक और AI विश्लेषण डेटाबेस
     const questionsDatabase = [
-        // MP GK
         {
             category: "MP GK",
             badge: "MP GK स्पेशल",
             question: "मध्य प्रदेश का राज्य पशु कौन सा है?",
             options: ["चीता", "बारहसिंगा (दलदल का हिरण)", "बाघ", "हाथी"],
-            answer: 1
+            answer: 1,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> मध्य प्रदेश का राज्य पशु 'बारहसिंगा' (दलदल का हिरण) है, जो ब्रैडरी प्रजाति का होता है। यह विशेष रूप से कान्हा किसली राष्ट्रीय उद्यान में बहुतायत में पाया जाता है।"
         },
         {
             category: "MP GK",
             badge: "MP GK स्पेशल",
-            question: "मध्य प्रदेश की 'सांची स्तूप' का निर्माण किस शासक ने करवाया था?",
-            options: ["चंद्रगुप्त मौर्य", "सम्राट अशोक", "कनिष्क", "राजा भोज"],
-            answer: 1
+            question: "मध्य प्रदेश में 'सांची का स्तूप' किस जिले में स्थित है?",
+            options: ["भोपाल", "रायसेन", "विदिशा", "उज्जैन"],
+            answer: 1,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> सांची का स्तूप रायसेन जिले में स्थित है। इसका निर्माण मौर्य सम्राट अशोक ने ईसा पूर्व तीसरी शताब्दी में करवाया था। इसे 1989 में यूनेस्को विश्व धरोहर घोषित किया गया।"
         },
-        {
-            category: "MP GK",
-            badge: "MP GK स्पेशल",
-            question: "मध्य प्रदेश का सबसे बड़ा राष्ट्रीय उद्यान कौन सा है?",
-            options: ["कान्हा किसली", "बांधवगढ़", "पेंच", "माधव"],
-            answer: 0
-        },
-        // Indian GK
         {
             category: "India GK",
             badge: "भारत का सामान्य ज्ञान",
             question: "भारतीय संविधान का जनक किसे कहा जाता है?",
             options: ["डॉ. राजेंद्र प्रसाद", "महात्मा गांधी", "डॉ. बी.आर. अंबेडकर", "पंडित नेहरू"],
-            answer: 2
+            answer: 2,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> डॉ. भीमराव अंबेडकर को प्रारूप समिति (Drafting Committee) का अध्यक्ष होने और संविधान निर्माण में प्रमुख योगदान के लिए संविधान का जनक कहा जाता है।"
         },
         {
             category: "India GK",
             badge: "भारत का सामान्य ज्ञान",
             question: "भारत की सबसे लम्बी नदी कौन सी है?",
             options: ["ब्रह्मपुत्र", "गंगा", "गोदावरी", "नर्मदा"],
-            answer: 1
+            answer: 1,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> गंगा नदी की कुल लंबाई लगभग 2525 किलोमीटर है, जो भारत के अंदर बहने वाली सबसे लम्बी नदी है। यह गंगोत्री ग्लेशियर से निकलती है।"
         },
-        // Current Affairs
         {
             category: "Current",
             badge: "करेंट अफेयर्स",
-            question: "भारत के वर्तमान मुख्य चुनाव आयुक्त कौन हैं?",
+            question: "वर्तमान में भारत के मुख्य चुनाव आयुक्त (Chief Election Commissioner) कौन हैं?",
             options: ["राजीव कुमार", "सुनील अरोड़ा", "ओम बिरला", "एस. जयशंकर"],
-            answer: 0
+            answer: 0,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> वर्तमान में मुख्य चुनाव आयुक्त राजीव कुमार हैं। भारतीय चुनाव आयोग का उल्लेख संविधान के अनुच्छेद 324 में मिलता है।"
         },
-        // History & Geography
         {
             category: "History",
             badge: "इतिहास एवं भूगोल",
             question: "सिंधु घाटी सभ्यता का प्रमुख बंदरगाह कौन सा था?",
             options: ["कालीबंगा", "लोथल", "हड़प्पा", "मोहनजोदड़ो"],
-            answer: 1
+            answer: 1,
+            aiExplanation: "💡 <b>AI व्याख्या:</b> लोथल (गुजरात के भोगवा नदी के तट पर) सिंधु घाटी सभ्यता का सबसे प्रमुख प्राचीन बंदरगाह (Godiwada) था।"
         }
     ];
 
     let currentQuestions = [];
     let currentIndex = 0;
+    let timerInterval = null;
+    let timeLeft = 15;
 
-    function filterCategory(cat) {
+    // 4. TIMER FUNCTIONALITY (15 सेकंड टाइमर)
+    function startTimer() {
+        clearInterval(timerInterval);
+        timeLeft = 15;
+        updateTimerDisplay();
+
+        timerInterval = setInterval(() => {
+            timeLeft--;
+            updateTimerDisplay();
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                playWrongSound();
+                handleTimeout();
+            }
+        }, 1000);
+    }
+
+    function updateTimerDisplay() {
+        document.getElementById('timerText').innerText = timeLeft + 's';
+        const progressPercent = (timeLeft / 15) * 100;
+        document.getElementById('timerProgress').style.width = progressPercent + '%';
+    }
+
+    function handleTimeout() {
+        const allBtns = document.querySelectorAll('.opt-btn');
+        allBtns.forEach(b => b.disabled = true);
+        const correctIdx = currentQuestions[currentIndex].answer;
+        allBtns[correctIdx].classList.add('correct');
+        document.getElementById('aiBtn').style.display = 'block';
+        document.getElementById('nextBtn').style.display = 'block';
+    }
+
+    // 5. QUIZ LOGIC
+    function filterCategory(cat, event) {
         document.querySelectorAll('.cat-btn').forEach(btn => btn.classList.remove('active'));
-        event.target.classList.add('active');
+        if(event) event.target.classList.add('active');
 
         currentQuestions = questionsDatabase.filter(q => q.category === cat);
         if(currentQuestions.length === 0) currentQuestions = questionsDatabase;
@@ -356,6 +674,7 @@
         
         const optBox = document.getElementById('optionsBox');
         optBox.innerHTML = '';
+        document.getElementById('aiBtn').style.display = 'none';
         document.getElementById('nextBtn').style.display = 'none';
 
         q.options.forEach((opt, idx) => {
@@ -365,21 +684,27 @@
             btn.onclick = () => checkAnswer(btn, idx, q.answer);
             optBox.appendChild(btn);
         });
+
+        startTimer();
     }
 
     function checkAnswer(btn, selected, correct) {
+        clearInterval(timerInterval);
         const allBtns = document.querySelectorAll('.opt-btn');
         allBtns.forEach(b => b.disabled = true);
 
         if(selected === correct) {
+            playSuccessSound();
             btn.classList.add('correct');
             btn.querySelector('i').className = "fa-solid fa-circle-check";
         } else {
+            playWrongSound();
             btn.classList.add('wrong');
             btn.querySelector('i').className = "fa-solid fa-circle-xmark";
             allBtns[correct].classList.add('correct');
         }
 
+        document.getElementById('aiBtn').style.display = 'block';
         document.getElementById('nextBtn').style.display = 'block';
     }
 
@@ -391,19 +716,30 @@
         loadQuestion();
     }
 
+    // 6. AI MODAL
+    function openAIExplainer() {
+        const q = currentQuestions[currentIndex];
+        document.getElementById('aiText').innerHTML = q.aiExplanation || "महेश AI गुरु: इस प्रश्न को नियमित रूप से दोहराएं।";
+        document.getElementById('aiModal').style.display = 'flex';
+    }
+
+    function closeAIModal() {
+        document.getElementById('aiModal').style.display = 'none';
+    }
+
     function shareApp() {
         if (navigator.share) {
             navigator.share({
                 title: 'महेश गुरु - GK App',
-                text: 'MP GK और Indian GK की सबसे बेहतरीन तैयारी के लिए महेश गुरु ऐप डाउनलोड करें!',
+                text: 'MP GK और India GK की तैयारी के लिए महेश गुरु ऐप देखें!',
                 url: window.location.href
             });
         } else {
-            alert('ऐप लिंक कॉपी हो गया है!');
+            alert('ऐप लिंक: ' + window.location.href);
         }
     }
 
-    // डिफ़ॉल्ट रूप से पहले MP GK लोड करें
+    // डिफ़ॉल्ट रूप से पहला सेट लोड करें
     currentQuestions = questionsDatabase.filter(q => q.category === 'MP GK');
     loadQuestion();
 </script>
